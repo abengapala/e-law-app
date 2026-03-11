@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function POST(req: NextRequest) {
   const { packageName, price, packageId, userId } = await req.json()
 
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+
   const response = await fetch('https://api.paymongo.com/v1/links', {
     method: 'POST',
     headers: {
@@ -14,7 +16,7 @@ export async function POST(req: NextRequest) {
         attributes: {
           amount: price * 100,
           description: `E-LAW Solar — ${packageName}`,
-          remarks: `userId:${userId}|packageId:${packageId}`
+          remarks: `userId:${userId}|packageId:${packageId}`,
         }
       }
     })

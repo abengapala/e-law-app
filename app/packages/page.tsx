@@ -81,11 +81,13 @@ export default function PackagesPage() {
           status: 'pending'
         })
         window.location.href = data.url
-      } else {
-        alert('Something went wrong. Please try again.')
+    } else {
+        console.error('Checkout error:', data)
+        alert('Something went wrong: ' + JSON.stringify(data.error))
       }
     } catch (e) {
-      alert('Something went wrong. Please try again.')
+      console.error('Catch error:', e)
+      alert('Something went wrong: ' + e)
     }
     setLoading(null)
   }
