@@ -46,15 +46,17 @@ export default function Dashboard() {
           background: #161d2e; border-bottom: 1px solid rgba(255,255,255,0.08);
           padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: #f59e0b; }
-        .nav-right { display: flex; align-items: center; gap: 1rem; }
+        .logo { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: #f59e0b; cursor: pointer; }
+        .nav-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
         .user-email { font-size: 0.85rem; color: #94a3b8; }
-        .logout-btn {
+        .nav-btn {
           padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(245,158,11,0.3);
           background: transparent; color: #f59e0b; font-family: 'Syne', sans-serif;
           font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
         }
-        .logout-btn:hover { background: rgba(245,158,11,0.1); }
+        .nav-btn:hover { background: rgba(245,158,11,0.1); }
+        .nav-btn.solid { background: #f59e0b; color: #0a0f1e; border-color: #f59e0b; }
+        .nav-btn.solid:hover { opacity: 0.85; }
         .container { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; }
         .welcome { font-family: 'Syne', sans-serif; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; }
         .welcome span { color: #f59e0b; }
@@ -87,19 +89,28 @@ export default function Dashboard() {
         }
         .order-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
         .order-price { color: #94a3b8; font-size: 0.85rem; margin-top: 0.25rem; }
-        .status {
-          padding: 0.35rem 0.85rem; border-radius: 99px; font-size: 0.8rem; font-weight: 500;
-        }
+        .status { padding: 0.35rem 0.85rem; border-radius: 99px; font-size: 0.8rem; font-weight: 500; }
         .status.pending { background: rgba(245,158,11,0.15); color: #f59e0b; }
         .status.confirmed { background: rgba(16,185,129,0.15); color: #6ee7b7; }
         .status.installed { background: rgba(99,102,241,0.15); color: #a5b4fc; }
+        @media (max-width: 768px) {
+          .nav { padding: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+          .nav-right { gap: 0.5rem; }
+          .user-email { display: none; }
+          .container { padding: 1.5rem 1rem; }
+          .welcome { font-size: 1.25rem; }
+          .stats { grid-template-columns: 1fr; }
+          .order-card { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+        }
       `}</style>
 
       <nav className="nav">
-        <div className="logo">☀️ E-LAW Solar</div>
+        <div className="logo" onClick={() => router.push('/')}>☀️ E-LAW Solar</div>
         <div className="nav-right">
           <span className="user-email">{user?.email}</span>
-          <button className="logout-btn" onClick={handleLogout}>Logout</button>
+          <button className="nav-btn" onClick={() => router.push('/')}>🏠 Home</button>
+          <button className="nav-btn solid" onClick={() => router.push('/packages')}>Buy Package</button>
+          <button className="nav-btn" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
 
@@ -130,7 +141,7 @@ export default function Dashboard() {
           <div className="empty-card">
             <div className="empty-icon">🌞</div>
             <p className="empty-text">No orders yet. Browse our solar packages and start saving!</p>
-            <button className="cta-btn" onClick={() => router.push('/#packages')}>
+            <button className="cta-btn" onClick={() => router.push('/packages')}>
               View Packages →
             </button>
           </div>
