@@ -80,12 +80,7 @@ export default function PackagesPage() {
           total_price: pkg.price,
           status: 'pending'
         })
-        // Open PayMongo in new tab, redirect current tab to success
-        window.open(data.url, '_blank')
-        // Redirect current page to success after 2 seconds
-        setTimeout(() => {
-          window.location.href = '/success'
-        }, 2000)
+        window.location.href = data.url
       } else {
         console.error('Checkout error:', data)
         alert('Something went wrong: ' + JSON.stringify(data.error))
