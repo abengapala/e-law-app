@@ -25,7 +25,7 @@ if (error) {
   setError(error.message)
 } else {
   const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL
-  if (data.user?.email === adminEmail) {
+  if (data.user?.email === 'e-lawsolar@gmail.com') {
     router.push('/admin')
   } else {
     router.push('/dashboard')
