@@ -167,19 +167,27 @@ export default function AdminPage() {
                   {order.status}
                 </span>
                 <div className="status-btns">
-                  <button className="status-btn pending" disabled={order.status === 'pending' || updating === order.id}
-                    onClick={() => updateStatus(order.id, 'pending')}>
-                    Pending
-                  </button>
-                  <button className="status-btn confirmed" disabled={order.status === 'confirmed' || updating === order.id}
-                    onClick={() => updateStatus(order.id, 'confirmed')}>
-                    ✓ Confirm
-                  </button>
-                  <button className="status-btn installed" disabled={order.status === 'installed' || updating === order.id}
-                    onClick={() => updateStatus(order.id, 'installed')}>
-                    ⚡ Installed
-                  </button>
-                </div>
+  {order.status === 'cancelled' ? (
+    <span style={{fontSize:'0.85rem', color:'#fca5a5', background:'rgba(239,68,68,0.1)', padding:'0.35rem 0.85rem', borderRadius:'99px', border:'1px solid rgba(239,68,68,0.3)'}}>
+      ❌ Cancelled by customer
+    </span>
+  ) : (
+    <>
+      <button className="status-btn pending" disabled={order.status === 'pending' || updating === order.id}
+        onClick={() => updateStatus(order.id, 'pending')}>
+        Pending
+      </button>
+      <button className="status-btn confirmed" disabled={order.status === 'confirmed' || updating === order.id}
+        onClick={() => updateStatus(order.id, 'confirmed')}>
+        ✓ Confirm
+      </button>
+      <button className="status-btn installed" disabled={order.status === 'installed' || updating === order.id}
+        onClick={() => updateStatus(order.id, 'installed')}>
+        ⚡ Installed
+      </button>
+    </>
+  )}
+</div>
               </div>
             </div>
           ))
