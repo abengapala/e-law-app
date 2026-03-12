@@ -27,7 +27,7 @@ export default function AdminPage() {
   const fetchOrders = async () => {
     const { data } = await supabase
       .from('orders')
-      .select('*, packages(name, price), profiles(full_name, phone)')
+      .select('*, packages(name, price), profiles(full_name, phone), user_id')
       .order('created_at', { ascending: false })
     setOrders(data || [])
   }
@@ -146,9 +146,11 @@ export default function AdminPage() {
                   <div className="order-name">{order.packages?.name}</div>
                   <div className="order-price">₱{order.packages?.price?.toLocaleString()}</div>
                   <div className="customer-info">
-                    👤 {order.profiles?.full_name || 'Unknown'} 
-                    {order.profiles?.phone && ` · 📞 ${order.profiles.phone}`}
-                  </div>
+  👤 {order.profiles?.full_name || 'Unknown'} 
+  {order.profiles?.phone && ` · 📞 ${order.profiles.phone}`}
+  <br/>
+  <span style={{fontSize:'0.8rem', color:'#64748b'}}>ID: {order.user_id?.slice(0,8)}...</span>
+</div>
                 </div>
                 <div className="order-date">
                   {new Date(order.created_at).toLocaleDateString('en-PH', {

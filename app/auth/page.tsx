@@ -1,41 +1,47 @@
-"use client";
-import { useState } from "react";
-import { supabase } from "../../lib/supabase";
-import { useRouter } from "next/navigation";
+'use client'
+import { useState } from 'react'
+import { supabase } from '../../lib/supabase'
+import { useRouter } from 'next/navigation'
 
 export default function AuthPage() {
-  const router = useRouter();
-  const [isLogin, setIsLogin] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
+  const router = useRouter()
+  const [isLogin, setIsLogin] = useState(true)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [fullName, setFullName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
 
   const handleAuth = async () => {
-    setLoading(true);
-    setError("");
-    setMessage("");
+    setLoading(true)
+    setError('')
+    setMessage('')
 
     if (isLogin) {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) setError(error.message);
-      else router.push("/dashboard");
+      const { error } = await supabase.auth.signInWithPassword({ email, password })
+      if (error) setError(error.message)
+      else router.push('/dashboard')
     } else {
-      const { data, error } = await supabase.auth.signUp({ email, password });
+      if (!fullName) { setError('Please enter your full name.'); setLoading(false); return }
+      if (!phone) { setError('Please enter your phone number.'); setLoading(false); return }
+
+      const { data, error } = await supabase.auth.signUp({ email, password })
       if (error) {
-        setError(error.message);
+        setError(error.message)
       } else if (data.user) {
-        await supabase.from("profiles").insert({
+        await supabase.from('profiles').insert({
           id: data.user.id,
           full_name: fullName,
-        });
-        setMessage("✅ Account created! Please check your email to verify.");
+          phone: phone,
+        })
+        setMessage('✅ Account created! You can now log in.')
+        setIsLogin(true)
       }
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   return (
     <>
@@ -84,24 +90,29 @@ export default function AuthPage() {
       `}</style>
       <div className="page">
         <div className="card">
-          <div className="logo">E-LAW Solar</div>
+          <div className="logo">☀️ E-LAW Solar</div>
           <div className="subtitle">Customer Portal — Manage your solar journey</div>
           <div className="tabs">
-            <button className={`tab ${isLogin ? "active" : ""}`} onClick={() => setIsLogin(true)}>Login</button>
-            <button className={`tab ${!isLogin ? "active" : ""}`} onClick={() => setIsLogin(false)}>Sign Up</button>
+            <button className={`tab ${isLogin ? 'active' : ''}`} onClick={() => setIsLogin(true)}>Login</button>
+            <button className={`tab ${!isLogin ? 'active' : ''}`} onClick={() => setIsLogin(false)}>Sign Up</button>
           </div>
+
           {!isLogin && (
             <>
               <label>Full Name</label>
-              <input placeholder="Juan dela Cruz" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+              <input placeholder="Juan dela Cruz" value={fullName} onChange={e => setFullName(e.target.value)} />
+              <label>Phone Number</label>
+              <input placeholder="09xxxxxxxxx" value={phone} onChange={e => setPhone(e.target.value)} />
             </>
           )}
+
           <label>Email Address</label>
-          <input type="email" placeholder="juan@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="email" placeholder="juan@email.com" value={email} onChange={e => setEmail(e.target.value)} />
           <label>Password</label>
-          <input type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} />
+
           <button className="btn" onClick={handleAuth} disabled={loading}>
-            {loading ? "Please wait..." : isLogin ? "Login →" : "Create Account →"}
+            {loading ? 'Please wait...' : isLogin ? 'Login →' : 'Create Account →'}
           </button>
           {error && <div className="error">{error}</div>}
           {message && <div className="success">{message}</div>}
@@ -109,5 +120,5 @@ export default function AuthPage() {
         </div>
       </div>
     </>
-  );
+  )
 }
