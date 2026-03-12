@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
 
-  const response = await fetch('https://api.paymongo.com/v1/links', {
+  const response = await fetch('https://api.paymongo.com/v1/checkout_sessions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -14,12 +14,28 @@ export async function POST(req: NextRequest) {
     body: JSON.stringify({
       data: {
         attributes: {
-          amount: price * 100,
+          billing: {
+            name: 'E-LAW Customer'
+          },
+          send_email_receipt: false,
+          show_description: true,
+          show_line_items: true,
+          line_items: [
+            {
+              currency: 'PHP',
+              amount: price * 100,
+              description: packageName,
+              name: `E-LAW Solar — ${packageName}`,
+              quantity: 1,
+            }
+          ],
+          payment_method_types: ['card', 'gcash', 'paymaya'],
+          success_url: `${appUrl}/success`,
+          cancel_url: `${appUrl}/packages`,
           description: `E-LAW Solar — ${packageName}`,
-          remarks: `userId:${userId}|packageId:${packageId}`,
-          redirect: {
-            success: `${appUrl}/success`,
-            failed: `${appUrl}/packages`
+          metadata: {
+            userId: userId,
+            packageId: packageId
           }
         }
       }
@@ -27,10 +43,12 @@ export async function POST(req: NextRequest) {
   })
 
   const data = await response.json()
+  console.log('PayMongo response:', JSON.stringify(data))
+
   const checkoutUrl = data.data?.attributes?.checkout_url
 
   if (!checkoutUrl) {
-    return NextResponse.json({ error: 'Failed to create payment link' }, { status: 500 })
+    return NextResponse.json({ error: 'Failed to create payment link', details: data }, { status: 500 })
   }
 
   return NextResponse.json({ url: checkoutUrl })
