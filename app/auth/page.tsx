@@ -20,9 +20,17 @@ export default function AuthPage() {
     setMessage('')
 
     if (isLogin) {
-      const { error } = await supabase.auth.signInWithPassword({ email, password })
-      if (error) setError(error.message)
-      else router.push('/dashboard')
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+if (error) {
+  setError(error.message)
+} else {
+  const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL
+  if (data.user?.email === adminEmail) {
+    router.push('/admin')
+  } else {
+    router.push('/dashboard')
+  }
+}
     } else {
       if (!fullName) { setError('Please enter your full name.'); setLoading(false); return }
       if (!phone) { setError('Please enter your phone number.'); setLoading(false); return }
