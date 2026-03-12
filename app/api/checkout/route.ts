@@ -3,9 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function POST(req: NextRequest) {
   const { packageName, price, packageId, userId } = await req.json()
 
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-
-  const response = await fetch('https://api.paymongo.com/v1/checkout_sessions', {
+  const response = await fetch('https://api.paymongo.com/v1/links', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -14,37 +12,15 @@ export async function POST(req: NextRequest) {
     body: JSON.stringify({
       data: {
         attributes: {
-          billing: {
-            name: 'E-LAW Customer'
-          },
-          send_email_receipt: false,
-          show_description: true,
-          show_line_items: true,
-          line_items: [
-            {
-              currency: 'PHP',
-              amount: price * 100,
-              description: packageName,
-              name: `E-LAW Solar — ${packageName}`,
-              quantity: 1,
-            }
-          ],
-          payment_method_types: ['card', 'gcash', 'paymaya'],
-          success_url: `${appUrl}/success`,
-          cancel_url: `${appUrl}/packages`,
+          amount: price * 100,
           description: `E-LAW Solar — ${packageName}`,
-          metadata: {
-            userId: userId,
-            packageId: packageId
-          }
+          remarks: `userId:${userId}|packageId:${packageId}`
         }
       }
     })
   })
 
   const data = await response.json()
-  console.log('PayMongo response:', JSON.stringify(data))
-
   const checkoutUrl = data.data?.attributes?.checkout_url
 
   if (!checkoutUrl) {

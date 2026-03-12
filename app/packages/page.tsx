@@ -80,8 +80,13 @@ export default function PackagesPage() {
           total_price: pkg.price,
           status: 'pending'
         })
-        window.location.href = data.url
-    } else {
+        // Open PayMongo in new tab, redirect current tab to success
+        window.open(data.url, '_blank')
+        // Redirect current page to success after 2 seconds
+        setTimeout(() => {
+          window.location.href = '/success'
+        }, 2000)
+      } else {
         console.error('Checkout error:', data)
         alert('Something went wrong: ' + JSON.stringify(data.error))
       }
@@ -147,6 +152,14 @@ export default function PackagesPage() {
           background: transparent; border: 1px solid rgba(245,158,11,0.3); color: #f59e0b;
         }
         .buy-btn.outline-btn:hover { background: rgba(245,158,11,0.1); }
+        @media (max-width: 768px) {
+          .nav { padding: 1rem; }
+          .hero { padding: 2rem 1rem 1rem; }
+          .hero-title { font-size: 1.75rem; }
+          .grid { grid-template-columns: 1fr; padding: 0 1rem 2rem; margin-top: 1.5rem; }
+          .nav-links { gap: 0.5rem; }
+          .user-email { display: none; }
+        }
       `}</style>
 
       <nav className="nav">
