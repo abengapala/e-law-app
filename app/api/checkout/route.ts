@@ -17,6 +17,10 @@ export async function POST(req: NextRequest) {
           amount: price * 100,
           description: `E-LAW Solar — ${packageName}`,
           remarks: `userId:${userId}|packageId:${packageId}`,
+          redirect: {
+            success: `${appUrl}/success`,
+            failed: `${appUrl}/packages`
+          }
         }
       }
     })
