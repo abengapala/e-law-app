@@ -87,7 +87,7 @@ export default function PackagesPage() {
           .eq('id', session.user.id)
           .single()
 
-        await fetch('/api/send-email', {
+        await fetch('/api/sendemail', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
