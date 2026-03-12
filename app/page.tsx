@@ -160,7 +160,16 @@ export default function Home() {
         .footer-tagline { font-size: 0.8rem; color: var(--muted); font-style: italic; }
         @media (max-width: 768px) {
           .hero-content, .calc-inner { grid-template-columns: 1fr; gap: 2rem; }
-          .nav-links { display: none; }
+          .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+          .nav-links a { font-size: 0.75rem; }
+          nav { padding: 1rem; }
+          .hero { padding: 5rem 1rem 2rem; }
+          .hero-title { font-size: 2rem; }
+          section { padding: 3rem 1rem; }
+          .packages-grid { grid-template-columns: 1fr; }
+          .why-grid { grid-template-columns: 1fr; }
+          .cta-actions { flex-direction: column; align-items: center; }
+          .footer-inner { flex-direction: column; text-align: center; }
           .hero-stats { grid-template-columns: 1fr 1fr; }
         }
       `}</style>

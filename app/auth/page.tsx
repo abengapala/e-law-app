@@ -95,6 +95,10 @@ if (error) {
         .success { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.85rem; margin-top: 1rem; }
         .back { display: block; text-align: center; margin-top: 1.5rem; color: #94a3b8; font-size: 0.85rem; text-decoration: none; }
         .back:hover { color: #f59e0b; }
+        @media (max-width: 768px) {
+          .page { padding: 1rem; }
+          .card { padding: 1.5rem; border-radius: 12px; }
+        }
       `}</style>
       <div className="page">
         <div className="card">

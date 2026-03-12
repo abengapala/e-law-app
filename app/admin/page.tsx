@@ -96,6 +96,12 @@ export default function AdminPage() {
           .stats { grid-template-columns: repeat(2, 1fr); }
           .nav { flex-wrap: wrap; gap: 0.5rem; }
           .order-top { flex-direction: column; }
+          .order-date { text-align: left; }
+          .status-btns { flex-wrap: wrap; }
+          .status-btn { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
+          .container { padding: 1.5rem 1rem; }
+          .page-title { font-size: 1.25rem; }
+          .nav { padding: 1rem; flex-wrap: wrap; gap: 0.5rem; }
         }
       `}</style>
 
