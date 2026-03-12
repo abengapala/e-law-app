@@ -14,7 +14,7 @@ export default function Dashboard() {
     const getUser = async () => {
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) { router.push('/auth'); return }
-      if (session.user.email === 'e-lawsolar@gmail.com') { router.push('/admin'); return }
+      if (session.user.email === 'ederalbertoabrazado28@gmail.com') { router.push('/admin'); return }
       setUser(session.user)
 
       const { data: profileData } = await supabase

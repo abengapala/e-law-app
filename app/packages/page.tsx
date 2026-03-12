@@ -80,6 +80,25 @@ export default function PackagesPage() {
           total_price: pkg.price,
           status: 'pending'
         })
+        // Send email notification
+        const { data: profileData } = await supabase
+          .from('profiles')
+          .select('full_name, phone')
+          .eq('id', session.user.id)
+          .single()
+
+        await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            customerName: profileData?.full_name || 'Customer',
+            customerEmail: session.user.email,
+            customerPhone: profileData?.phone || 'N/A',
+            packageName: pkg.name,
+            price: pkg.price
+          })
+        })
+
         window.location.href = data.url
       } else {
         console.error('Checkout error:', data)
