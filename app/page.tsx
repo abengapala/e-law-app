@@ -27,11 +27,9 @@ export default function Home() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll)
-
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user || null)
     })
-
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -74,7 +72,7 @@ export default function Home() {
           --sun: #f59e0b; --sun-light: #fef3c7; --dark: #0a0f1e; --dark2: #111827;
           --card: #161d2e; --text: #e2e8f0; --muted: #94a3b8; --green: #10b981;
         }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
         body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--text); overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
         nav {
@@ -94,6 +92,11 @@ export default function Home() {
         .nav-cta { background: var(--sun); color: var(--dark) !important; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 700 !important; font-size: 0.85rem !important; transition: opacity 0.2s !important; }
         .nav-cta:hover { opacity: 0.85; }
         .nav-email { font-size: 0.8rem; color: var(--muted); }
+        .nav-mobile { display: none; align-items: center; gap: 0.5rem; }
+        .nav-mobile a { text-decoration: none; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem; }
+        .nav-mobile .login { color: #94a3b8; padding: 0.4rem 0.75rem; }
+        .nav-mobile .quote { background: #f59e0b; color: #0a0f1e; padding: 0.4rem 0.9rem; border-radius: 6px; }
+        .nav-mobile .dashboard { background: #f59e0b; color: #0a0f1e; padding: 0.4rem 0.9rem; border-radius: 6px; }
         .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
         .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 60% 30%, rgba(245,158,11,0.12) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 80% 70%, rgba(16,185,129,0.06) 0%, transparent 60%); }
         .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(245,158,11,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.04) 1px, transparent 1px); background-size: 60px 60px; }
@@ -159,18 +162,27 @@ export default function Home() {
         .footer-info { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
         .footer-tagline { font-size: 0.8rem; color: var(--muted); font-style: italic; }
         @media (max-width: 768px) {
+          html, body { overflow-x: hidden; }
           .hero-content, .calc-inner { grid-template-columns: 1fr; gap: 2rem; }
-          .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-          .nav-links a { font-size: 0.75rem; }
-          nav { padding: 1rem; }
+          .nav-links { display: none; }
+          .nav-mobile { display: flex; }
+          nav { padding: 0.75rem 1rem; }
+          .nav-logo { font-size: 1.1rem; }
           .hero { padding: 5rem 1rem 2rem; }
-          .hero-title { font-size: 2rem; }
+          .hero-title { font-size: 1.75rem; letter-spacing: -0.5px; }
+          .hero-desc { font-size: 0.9rem; max-width: 100%; }
+          .hero-badge { font-size: 0.7rem; padding: 0.3rem 0.75rem; }
+          .hero-stats { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+          .stat-card { padding: 1rem; }
+          .stat-number { font-size: 1.4rem; }
+          .stat-label { font-size: 0.75rem; }
+          .btn-primary, .btn-secondary { width: 100%; text-align: center; font-size: 0.9rem; }
           section { padding: 3rem 1rem; }
+          .section-title { font-size: 1.5rem; }
           .packages-grid { grid-template-columns: 1fr; }
           .why-grid { grid-template-columns: 1fr; }
-          .cta-actions { flex-direction: column; align-items: center; }
+          .cta-actions { flex-direction: column; align-items: stretch; }
           .footer-inner { flex-direction: column; text-align: center; }
-          .hero-stats { grid-template-columns: 1fr 1fr; }
         }
       `}</style>
 
@@ -189,6 +201,16 @@ export default function Home() {
             <>
               <a href="/auth">Login</a>
               <a href="#contact" className="nav-cta">Get Free Quote</a>
+            </>
+          )}
+        </div>
+        <div className="nav-mobile">
+          {user ? (
+            <a href="/dashboard" className="dashboard">Dashboard</a>
+          ) : (
+            <>
+              <a href="/auth" className="login">Login</a>
+              <a href="#contact" className="quote">Free Quote</a>
             </>
           )}
         </div>
