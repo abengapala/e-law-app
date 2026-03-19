@@ -42,98 +42,68 @@ export default function AuthPage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Syne:wght@600;700&family=DM+Sans:wght@400;500&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-          --gold: #f59e0b; --gold-dim: rgba(245,158,11,0.1); --gold-border: rgba(245,158,11,0.2);
-          --navy: #0a0f1e; --card2: #161d2e; --text: #f1f5f9; --muted: #94a3b8; --border: rgba(255,255,255,0.06);
-        }
         html, body { overflow-x: hidden; min-height: 100vh; }
-        body { font-family: 'DM Sans', sans-serif; font-weight: 400; background: var(--navy); color: var(--text); }
+        body { font-family: 'DM Sans', sans-serif; background: #0E1C29; color: #fff; }
         .page {
           min-height: 100vh; display: flex;
-          background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(245,158,11,0.07) 0%, transparent 65%),
-                      radial-gradient(ellipse 50% 50% at 80% 100%, rgba(16,185,129,0.04) 0%, transparent 60%);
+          background: linear-gradient(135deg, rgba(14,28,41,1) 0%, rgba(10,21,32,1) 100%);
         }
         .left {
-          flex: 1; display: none; flex-direction: column; justify-content: center; padding: 5rem;
-          background: linear-gradient(135deg, rgba(245,158,11,0.05) 0%, transparent 60%);
-          border-right: 1px solid var(--border);
-          position: relative; overflow: hidden;
-        }
-        .left-bg {
-          position: absolute; inset: 0; z-index: 0;
-          background: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=70') center/cover no-repeat;
-          opacity: 0.08;
+          flex: 1; display: none; flex-direction: column; justify-content: center;
+          padding: 5rem; border-right: 1px solid rgba(255,255,255,0.05);
+          background: linear-gradient(180deg, rgba(14,28,41,0.4) 0%, rgba(14,28,41,0.8) 100%),
+            url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&q=70') center/cover no-repeat;
+          position: relative;
         }
         .left-content { position: relative; z-index: 1; }
-        .left-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--text); display: flex; align-items: center; gap: 0.6rem; margin-bottom: 3rem; text-decoration: none; }
-        .left-logo-icon { width: 36px; height: 36px; background: var(--gold); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-        .left-logo span { color: var(--gold); }
-        .left-title { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1.25rem; }
-        .left-title span { color: var(--gold); }
-        .left-desc { color: var(--muted); font-size: 1rem; line-height: 1.75; max-width: 400px; margin-bottom: 2.5rem; }
-        .left-stats { display: flex; flex-direction: column; gap: 1rem; }
+        .left-logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; color: #fff; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 3rem; text-decoration: none; letter-spacing: 0.02em; }
+        .left-logo-icon { width: 30px; height: 30px; background: #1AA3DE; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .left-title { font-family: 'Inter', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; letter-spacing: 3px; text-transform: uppercase; line-height: 1.1; margin-bottom: 1rem; color: #fff; }
+        .left-tagline { font-size: 0.7rem; color: #1AA3DE; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem; font-family: 'DM Sans', sans-serif; }
+        .left-desc { color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.75; max-width: 360px; margin-bottom: 2.5rem; font-family: 'DM Sans', sans-serif; }
+        .left-stats { display: flex; flex-direction: column; gap: 0.85rem; }
         .left-stat { display: flex; align-items: center; gap: 0.75rem; }
-        .left-stat-icon { width: 36px; height: 36px; background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-        .left-stat-text { font-size: 0.88rem; color: var(--muted); }
-        .left-stat-text strong { color: var(--text); font-weight: 600; display: block; font-size: 0.92rem; }
+        .left-stat-icon { width: 32px; height: 32px; background: rgba(26,163,222,0.12); border: 1px solid rgba(26,163,222,0.2); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+        .left-stat-text { font-size: 0.82rem; color: rgba(255,255,255,0.45); font-family: 'DM Sans', sans-serif; }
+        .left-stat-text strong { color: rgba(255,255,255,0.8); font-weight: 500; display: block; font-size: 0.85rem; }
         .right { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem; }
-        .card {
-          background: var(--card2); border: 1px solid var(--border);
-          border-radius: 24px; padding: 2.5rem; width: 100%; max-width: 420px;
-          box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-        }
-        .logo-wrap { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.3rem; }
-        .logo-icon { width: 32px; height: 32px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; }
-        .logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: 0.02em; }
-        .logo-text span { color: var(--gold); }
-        .subtitle { font-size: 0.82rem; color: var(--muted); margin-bottom: 2rem; margin-top: 0.25rem; font-weight: 400; }
-        .tabs { display: flex; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 4px; margin-bottom: 2rem; gap: 4px; }
-        .tab { flex: 1; padding: 0.65rem; border-radius: 8px; border: none; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em; cursor: pointer; transition: all 0.2s; background: transparent; color: var(--muted); }
-        .tab.active { background: var(--gold); color: var(--navy); }
-        .field { margin-bottom: 1rem; }
-        .field-label { font-size: 0.78rem; color: var(--muted); display: block; margin-bottom: 0.4rem; font-weight: 500; letter-spacing: 0.03em; }
-        input {
-          width: 100%; padding: 0.875rem 1rem;
-          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 10px; color: var(--text);
-          font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 400;
-          outline: none; transition: border-color 0.2s;
-        }
-        input:focus { border-color: var(--gold); background: rgba(245,158,11,0.04); }
-        input::placeholder { color: rgba(148,163,184,0.45); }
-        .btn {
-          width: 100%; padding: 0.9rem; border-radius: 10px; border: none;
-          background: var(--gold); color: var(--navy);
-          font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.92rem;
-          letter-spacing: 0.02em; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem;
-        }
-        .btn:hover { opacity: 0.88; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,158,11,0.3); }
-        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
-        .error { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); color: #fca5a5; padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.82rem; margin-top: 1rem; }
-        .success { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); color: #6ee7b7; padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.82rem; margin-top: 1rem; }
-        .back { display: block; text-align: center; margin-top: 1.5rem; color: var(--muted); font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
-        .back:hover { color: var(--gold); }
+        .card { background: #132030; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 2.5rem; width: 100%; max-width: 400px; box-shadow: 0 24px 60px rgba(0,0,0,0.4); }
+       .logo-wrap { display: flex; align-items: center; justify-content: center; margin-bottom: 0.25rem; }
+        .logo-icon { width: 28px; height: 28px; background: #1AA3DE; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+        .logo-text { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.02em; }
+        .subtitle { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-bottom: 1.75rem; margin-top: 0.2rem; font-family: 'DM Sans', sans-serif; }
+        .tabs { display: flex; background: rgba(255,255,255,0.04); border-radius: 7px; padding: 3px; margin-bottom: 1.75rem; gap: 3px; border: 1px solid rgba(255,255,255,0.06); }
+        .tab { flex: 1; padding: 0.6rem; border-radius: 5px; border: none; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.83rem; cursor: pointer; transition: all 0.2s; background: transparent; color: rgba(255,255,255,0.45); }
+        .tab.active { background: #1AA3DE; color: #fff; }
+        .field { margin-bottom: 0.85rem; }
+        .field-label { font-size: 0.73rem; color: rgba(255,255,255,0.4); display: block; margin-bottom: 0.35rem; font-weight: 400; letter-spacing: 0.03em; font-family: 'DM Sans', sans-serif; }
+        input { width: 100%; padding: 0.8rem 0.95rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 7px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 400; outline: none; transition: border-color 0.2s; }
+        input:focus { border-color: #1AA3DE; background: rgba(26,163,222,0.04); }
+        input::placeholder { color: rgba(255,255,255,0.2); }
+        .btn { width: 100%; padding: 0.85rem; border-radius: 7px; border: none; background: #1AA3DE; color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; margin-top: 0.5rem; }
+        .btn:hover { background: #1591c7; transform: translateY(-1px); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .error { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.18); color: rgba(252,165,165,0.9); padding: 0.7rem 0.9rem; border-radius: 7px; font-size: 0.8rem; margin-top: 0.85rem; font-family: 'DM Sans', sans-serif; }
+        .success { background: rgba(26,163,222,0.07); border: 1px solid rgba(26,163,222,0.18); color: rgba(147,210,237,0.9); padding: 0.7rem 0.9rem; border-radius: 7px; font-size: 0.8rem; margin-top: 0.85rem; font-family: 'DM Sans', sans-serif; }
+        .back { display: block; text-align: center; margin-top: 1.25rem; color: rgba(255,255,255,0.3); font-size: 0.78rem; text-decoration: none; transition: color 0.2s; font-family: 'DM Sans', sans-serif; }
+        .back:hover { color: #1AA3DE; }
         @media (min-width: 1024px) { .left { display: flex; } }
         @media (max-width: 768px) { .right { padding: 1.25rem; align-items: flex-start; padding-top: 3rem; } .card { padding: 1.75rem; } }
       `}</style>
 
       <div className="page">
         <div className="left">
-          <div className="left-bg" />
           <div className="left-content">
-            <a href="/" className="left-logo">
-              <div className="left-logo-icon">☀️</div>
-              E-<span>LAW</span> Solar
-            </a>
-            <h2 className="left-title">Start Saving on<br />Electricity <span>Today</span></h2>
-            <p className="left-desc">Join hundreds of Filipino families who have cut their electricity bills by up to 90% with E-LAW Solar.</p>
+            <h2 className="left-title">Renewable Energy for Filipino Homes</h2>
+            <div className="left-tagline">Empowering Low-cost Affordable Watts</div>
+            <p className="left-desc">Join Filipino families who have cut their electricity bills by up to 90% with E-LAW Solar. Flexible payment options designed for every budget.</p>
             <div className="left-stats">
               {[
-                { icon: '⚡', label: 'Up to 90% savings', sub: 'On your monthly electricity bill' },
+                { icon: '⚡', label: '50–90% bill reduction', sub: 'On your monthly electricity cost' },
                 { icon: '🔧', label: 'Free installation', sub: 'Professional certified installers' },
-                { icon: '📞', label: '24/7 support', sub: 'Filipino-first customer service' },
+                { icon: '📞', label: 'Filipino-first support', sub: 'Tagalog & English customer service' },
               ].map((s, i) => (
                 <div className="left-stat" key={i}>
                   <div className="left-stat-icon">{s.icon}</div>
@@ -149,17 +119,14 @@ export default function AuthPage() {
 
         <div className="right">
           <div className="card">
-            <div className="logo-wrap">
-              <div className="logo-icon">☀️</div>
-              <div className="logo-text">E-<span>LAW</span> Solar</div>
-            </div>
+          <div className="logo-wrap">
+  <img src="/logo.png" alt="E-LAW Solar" style={{height:'100px', width:'auto', objectFit:'contain'}} />
+</div>
             <div className="subtitle">Customer Portal — Manage your solar journey</div>
-
             <div className="tabs">
               <button className={`tab ${isLogin ? 'active' : ''}`} onClick={() => setIsLogin(true)}>Login</button>
               <button className={`tab ${!isLogin ? 'active' : ''}`} onClick={() => setIsLogin(false)}>Sign Up</button>
             </div>
-
             {!isLogin && (
               <>
                 <div className="field">
@@ -172,7 +139,6 @@ export default function AuthPage() {
                 </div>
               </>
             )}
-
             <div className="field">
               <label className="field-label">Email Address</label>
               <input type="email" placeholder="juan@email.com" value={email} onChange={e => setEmail(e.target.value)} />
@@ -181,11 +147,9 @@ export default function AuthPage() {
               <label className="field-label">Password</label>
               <input type="password" placeholder="••••••••" value={password} onChange={e => setPassword(e.target.value)} />
             </div>
-
             <button className="btn" onClick={handleAuth} disabled={loading}>
               {loading ? 'Please wait...' : isLogin ? 'Login to Dashboard →' : 'Create Account →'}
             </button>
-
             {error && <div className="error">{error}</div>}
             {message && <div className="success">{message}</div>}
             <a href="/" className="back">← Back to Homepage</a>

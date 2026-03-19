@@ -12,7 +12,6 @@ interface Package {
   price: string
   payback: string
   total: string
-  color: string
   minBill: number
   maxBill: number
   popular?: boolean
@@ -36,24 +35,24 @@ export default function Home() {
 
   const packages: Package[] = [
     {
-      name: 'Bahay Saver', tagline: 'Starter Package', size: '3 kW', panels: 12,
-      bill: '₱4,000 – ₱6,000', savings: '₱2,000 – ₱3,500', price: '₱180,000',
-      payback: '4–5 years', total: '₱1,050,000', color: '#1AA3DE', minBill: 4000, maxBill: 6999,
+      name: 'Bahay Saver', tagline: 'Starter Package', size: '3 kW', panels: 6,
+      bill: '₱4,000 – ₱7,000', savings: '₱2,000 – ₱3,500', price: '₱150,000–₱175,000',
+      payback: '4–5 years', total: '₱600,000+', minBill: 4000, maxBill: 6999,
     },
     {
-      name: 'Family Power', tagline: 'Standard Package', size: '5 kW', panels: 20,
-      bill: '₱7,000 – ₱10,000', savings: '₱4,000 – ₱6,000', price: '₱280,000',
-      payback: '4–5 years', total: '₱1,800,000', color: '#1AA3DE', minBill: 7000, maxBill: 9999, popular: true,
+      name: 'Family Power', tagline: 'Standard Package', size: '5 kW', panels: 10,
+      bill: '₱7,000 – ₱10,000', savings: '₱4,000 – ₱7,000', price: '₱250,000–₱280,000',
+      payback: '3.5–4 years', total: '₱2,100,000+', minBill: 7000, maxBill: 9999, popular: true,
     },
     {
-      name: 'Home Independence', tagline: 'Premium Package', size: '8 kW', panels: 32,
-      bill: '₱10,000 – ₱15,000', savings: '₱6,000 – ₱10,000', price: '₱420,000',
-      payback: '3.5–4.5 years', total: '₱3,000,000', color: '#1AA3DE', minBill: 10000, maxBill: 14999,
+      name: 'Home Independence', tagline: 'Premium Package', size: '8 kW', panels: 16,
+      bill: '₱10,000 – ₱15,000', savings: '₱6,000 – ₱10,000', price: '₱420,000–₱450,000',
+      payback: '3.5–4.5 years', total: '₱3,000,000+', minBill: 10000, maxBill: 14999,
     },
     {
-      name: 'Zero Bill', tagline: 'Ultimate Package', size: '10–12 kW', panels: 48,
-      bill: '₱15,000+', savings: '₱10,000 – ₱15,000', price: '₱550,000 – ₱700,000',
-      payback: '3–4 years', total: '₱4,500,000', color: '#1AA3DE', minBill: 15000, maxBill: Infinity,
+      name: 'Zero Bill', tagline: 'Ultimate Package', size: '10–12 kW', panels: 22,
+      bill: '₱15,000+', savings: '₱10,000 – ₱15,000+', price: '₱550,000–₱700,000',
+      payback: '3–4 years', total: '₱4,500,000+', minBill: 15000, maxBill: Infinity,
     },
   ]
 
@@ -72,7 +71,6 @@ export default function Home() {
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body { font-family: 'DM Sans', sans-serif; background: #0E1C29; color: #fff; overflow-x: hidden; }
 
-        /* NAV */
         nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
           padding: 1.25rem 3rem;
@@ -84,43 +82,32 @@ export default function Home() {
           backdrop-filter: blur(16px);
           border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        .nav-logo {
-          font-family: 'Bebas Neue', sans-serif; font-weight: 800; font-size: 1.3rem;
-          color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.6rem;
-        }
+        .nav-logo { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.6rem; letter-spacing: 0.02em; }
         .nav-logo-icon { width: 30px; height: 30px; background: #1AA3DE; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
         .nav-center { display: flex; gap: 2.5rem; align-items: center; }
-        .nav-center a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem; font-weight: 400; transition: color 0.2s; }
+        .nav-center a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 400; transition: color 0.2s; font-family: 'DM Sans', sans-serif; }
         .nav-center a:hover { color: #fff; }
         .nav-right { display: flex; align-items: center; gap: 1rem; }
-        .nav-cta {
-          background: #1AA3DE; color: #fff;
-          padding: 0.5rem 1.35rem; border-radius: 6px;
-          font-weight: 600; font-size: 0.85rem; text-decoration: none;
-          transition: all 0.2s; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
-        }
+        .nav-cta { background: #1AA3DE; color: #fff; padding: 0.5rem 1.25rem; border-radius: 5px; font-weight: 500; font-size: 0.83rem; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
         .nav-cta:hover { background: #1591c7; }
-        .nav-login { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+        .nav-login { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; font-weight: 400; transition: color 0.2s; }
         .nav-login:hover { color: #fff; }
         .nav-mobile-btn { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
 
-        /* MOBILE MENU */
         .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(14,28,41,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
         .mobile-menu.open { display: flex; }
-        .mobile-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
+        .mobile-menu a { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
         .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; }
 
-        /* HERO */
         .hero {
           min-height: 100vh;
-          background: linear-gradient(180deg, rgba(14,28,41,0.55) 0%, rgba(14,28,41,0.8) 55%, #0E1C29 100%),
+          background: linear-gradient(180deg, rgba(14,28,41,0.5) 0%, rgba(14,28,41,0.75) 50%, #0E1C29 100%),
             url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1600&q=80') center/cover no-repeat;
           display: flex; align-items: flex-end; padding: 0 3rem 5rem;
-          position: relative;
         }
         .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; padding-top: 9rem; }
-        .hero-eyebrow { font-size: 0.7rem; color: rgba(255,255,255,0.5); font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; }
-      .hero-title {
+        .hero-eyebrow { font-size: 0.68rem; color: rgba(255,255,255,0.5); font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; font-family: 'DM Sans', sans-serif; }
+        .hero-title {
           font-family: 'Inter', sans-serif;
           font-size: clamp(1.8rem, 3.5vw, 3rem);
           font-weight: 300;
@@ -130,101 +117,93 @@ export default function Home() {
           margin-bottom: 0.75rem;
           max-width: 900px; color: #fff;
         }
-        .hero-sub { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 500px; margin-bottom: 2rem; font-weight: 300; }
+        .hero-tagline { font-size: 0.78rem; color: #1AA3DE; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; font-family: 'DM Sans', sans-serif; }
+        .hero-sub { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.75; max-width: 480px; margin-bottom: 2rem; font-weight: 400; font-family: 'DM Sans', sans-serif; }
         .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .btn-primary { background: #1AA3DE; color: #fff; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+        .btn-primary { background: #1AA3DE; color: #fff; padding: 0.8rem 1.75rem; border-radius: 5px; font-weight: 500; font-size: 0.88rem; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
         .btn-primary:hover { background: #1591c7; transform: translateY(-1px); }
-        .btn-ghost { background: transparent; color: #fff; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 500; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.25); cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
-        .btn-ghost:hover { border-color: rgba(255,255,255,0.5); }
+        .btn-ghost { background: transparent; color: #fff; padding: 0.8rem 1.75rem; border-radius: 5px; font-weight: 400; font-size: 0.88rem; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+        .btn-ghost:hover { border-color: rgba(255,255,255,0.45); }
 
-        /* SOLUTIONS SECTION */
-        .solutions { background: #0E1C29; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
+        .stats-sec { background: #132030; padding: 3rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+       .stat-num { font-family: 'DM Sans', sans-serif; font-size: 1.9rem; font-weight: 500; color: #1AA3DE; margin-bottom: 0.25rem; }
+        .stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-weight: 400; font-family: 'DM Sans', sans-serif; }
+
+        .solutions { background: #0E1C29; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
         .solutions-inner { max-width: 1100px; margin: 0 auto; }
-        .sec-eyebrow { font-size: 0.72rem; color: rgba(255,255,255,0.4); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
-        .sec-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 3rem; letter-spacing: -0.3px; }
+        .sec-eyebrow { font-size: 0.68rem; color: rgba(255,255,255,0.35); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.4rem; font-family: 'DM Sans', sans-serif; }
+        .sec-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 2.8vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 2.5rem; letter-spacing: 0.3px; }
         .solutions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
-        .solution-item { }
-        .solution-title { font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
-        .solution-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 1rem; font-weight: 400; }
-        .solution-link { font-size: 0.8rem; color: #1AA3DE; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.35rem; transition: gap 0.2s; }
-        .solution-link:hover { gap: 0.6rem; }
+        .solution-title { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.65rem; letter-spacing: 0.02em; }
+        .solution-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 0.85rem; font-weight: 400; }
+        .solution-link { font-size: 0.78rem; color: #1AA3DE; font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; font-family: 'DM Sans', sans-serif; }
+        .solution-link:hover { gap: 0.55rem; }
 
-        /* WHY US */
-        .why-sec { background: #0a1520; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
+        .why-sec { background: #0a1520; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
         .why-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-        .why-content {}
-        .why-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.2; letter-spacing: -0.5px; }
-        .why-subtitle { font-size: 0.78rem; color: rgba(255,255,255,0.4); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
-        .why-text { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 1.75rem; font-weight: 400; }
-        .why-link { font-size: 0.82rem; color: #1AA3DE; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.35rem; transition: gap 0.2s; width: fit-content; }
-        .why-link:hover { gap: 0.6rem; }
-        .why-img { border-radius: 12px; overflow: hidden; height: 320px; background: #1a2f3f; }
+        .why-title { font-family: 'Syne', sans-serif; font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 700; color: #fff; margin-bottom: 0.4rem; line-height: 1.25; letter-spacing: 0.2px; }
+        .why-subtitle { font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; margin-bottom: 1.25rem; font-family: 'DM Sans', sans-serif; }
+        .why-text { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.85; margin-bottom: 1.5rem; font-weight: 400; font-family: 'DM Sans', sans-serif; }
+        .why-link { font-size: 0.8rem; color: #1AA3DE; font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; width: fit-content; font-family: 'DM Sans', sans-serif; }
+        .why-link:hover { gap: 0.55rem; }
+        .why-img { border-radius: 10px; overflow: hidden; height: 320px; background: #1a2f3f; }
         .why-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* PACKAGES */
-        .packages-sec { background: #0E1C29; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
+        .packages-sec { background: #0E1C29; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
         .packages-inner { max-width: 1100px; margin: 0 auto; }
-        .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem; }
-        .pkg-card { background: #132030; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; overflow: hidden; transition: all 0.3s; position: relative; }
-        .pkg-card:hover { transform: translateY(-4px); border-color: rgba(26,163,222,0.3); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
-        .pkg-card.popular { border-color: rgba(26,163,222,0.4); }
-        .pkg-img { width: 100%; height: 160px; object-fit: cover; display: block; }
-        .pkg-img-placeholder { width: 100%; height: 160px; background: linear-gradient(135deg, #1a2f3f, #0e1c29); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+        .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+        .pkg-card { background: #132030; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; overflow: hidden; transition: all 0.3s; position: relative; }
+        .pkg-card:hover { transform: translateY(-4px); border-color: rgba(26,163,222,0.25); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+        .pkg-card.popular { border-color: rgba(26,163,222,0.35); }
+        .pkg-img-placeholder { width: 100%; height: 155px; background: linear-gradient(135deg, #1a2f3f, #0e1c29); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; color: rgba(255,255,255,0.25); font-size: 0.72rem; font-family: 'DM Sans', sans-serif; }
         .pkg-img-placeholder span { font-size: 2rem; }
-        .popular-badge { position: absolute; top: 10px; right: 10px; background: #1AA3DE; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'Bebas Neue', sans-serif; }
-        .pkg-body { padding: 1.25rem; }
-        .pkg-tagline { font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.25rem; }
-        .pkg-name { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; letter-spacing: -0.2px; }
-        .pkg-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0.75rem 0; }
-        .pkg-row { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
-        .pkg-row-lbl { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
-        .pkg-row-val { font-size: 0.78rem; font-weight: 600; color: #fff; }
-        .pkg-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; font-weight: 800; color: #1AA3DE; margin: 0.85rem 0; letter-spacing: -0.3px; }
-        .pkg-btn { width: 100%; padding: 0.7rem; border-radius: 7px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; border: 1px solid rgba(26,163,222,0.3); background: transparent; color: rgba(255,255,255,0.8); }
+        .pkg-img { width: 100%; height: 155px; object-fit: cover; display: block; }
+        .popular-badge { position: absolute; top: 10px; right: 10px; background: #1AA3DE; color: #fff; font-size: 0.58rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; }
+        .pkg-body { padding: 1.1rem 1.25rem; }
+        .pkg-tagline { font-size: 0.62rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem; font-family: 'DM Sans', sans-serif; }
+        .pkg-name { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.65rem; letter-spacing: 0.02em; }
+        .pkg-divider { border: none; border-top: 1px solid rgba(255,255,255,0.05); margin: 0.65rem 0; }
+        .pkg-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .pkg-row-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.4); font-family: 'DM Sans', sans-serif; }
+        .pkg-row-val { font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.85); font-family: 'DM Sans', sans-serif; }
+       .pkg-price { font-family: 'DM Sans', sans-serif; font-size: 1.15rem; font-weight: 500; color: #1AA3DE; margin: 0.75rem 0; }
+        .pkg-btn { width: 100%; padding: 0.65rem; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; border: 1px solid rgba(26,163,222,0.25); background: transparent; color: rgba(255,255,255,0.7); }
         .pkg-btn:hover { border-color: #1AA3DE; color: #1AA3DE; }
         .pkg-btn.primary { background: #1AA3DE; color: #fff; border-color: #1AA3DE; }
         .pkg-btn.primary:hover { background: #1591c7; }
-        .pkg-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
-        /* CALCULATOR */
-        .calc-sec { background: #0a1520; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
+        .calc-sec { background: #0a1520; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.05); }
         .calc-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-        .calc-card { background: #132030; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 2rem; }
-        .calc-lbl { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-bottom: 0.5rem; display: block; }
-        .calc-input { width: 100%; padding: 0.875rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; margin-bottom: 1rem; }
+        .calc-card { background: #132030; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 2rem; }
+        .calc-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; display: block; font-family: 'DM Sans', sans-serif; }
+        .calc-input { width: 100%; padding: 0.825rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 7px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; outline: none; transition: border-color 0.2s; margin-bottom: 1rem; }
         .calc-input:focus { border-color: #1AA3DE; }
-        .calc-input::placeholder { color: rgba(255,255,255,0.25); }
-        .calc-result { background: rgba(26,163,222,0.08); border: 1px solid rgba(26,163,222,0.2); border-radius: 10px; padding: 1.25rem; margin-top: 1rem; }
-        .calc-result-label { font-size: 0.7rem; color: #1AA3DE; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.35rem; }
-        .calc-result-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
-        .calc-result-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+        .calc-input::placeholder { color: rgba(255,255,255,0.2); }
+        .calc-result { background: rgba(26,163,222,0.07); border: 1px solid rgba(26,163,222,0.18); border-radius: 8px; padding: 1.1rem; margin-top: 1rem; }
+        .calc-result-label { font-size: 0.67rem; color: #1AA3DE; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; font-family: 'DM Sans', sans-serif; }
+        .calc-result-name { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+        .calc-result-desc { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-family: 'DM Sans', sans-serif; }
 
-        /* STATS */
-        .stats-sec { background: #132030; padding: 3.5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
-        .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; font-weight: 800; color: #1AA3DE; margin-bottom: 0.25rem; }
-        .stat-lbl { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 400; }
-
-        /* CTA */
-        .cta-sec { background: #0E1C29; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
-        .cta-inner { max-width: 600px; margin: 0 auto; }
-        .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 1rem; letter-spacing: -0.5px; }
-        .cta-desc { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 2rem; }
+        .cta-sec { background: #0E1C29; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .cta-inner { max-width: 580px; margin: 0 auto; }
+        .cta-title { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 2.8vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 0.85rem; letter-spacing: 0.2px; }
+        .cta-desc { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 1.75rem; font-family: 'DM Sans', sans-serif; }
         .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-        /* FOOTER */
-        footer { background: #070e16; border-top: 1px solid rgba(255,255,255,0.06); padding: 4rem 3rem 2rem; }
-        .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .footer-desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 240px; margin-top: 1rem; }
-        .footer-col-title { font-family: 'Bebas Neue', sans-serif; font-weight: 700; font-size: 0.82rem; color: #fff; margin-bottom: 1.25rem; letter-spacing: 0.03em; }
-        .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
-        .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+        footer { background: #070e16; border-top: 1px solid rgba(255,255,255,0.05); padding: 4rem 3rem 2rem; }
+        .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .footer-brand-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #fff; margin-bottom: 0.3rem; }
+        .footer-brand-tagline { font-size: 0.7rem; color: #1AA3DE; letter-spacing: 0.05em; margin-bottom: 0.85rem; font-family: 'DM Sans', sans-serif; }
+        .footer-desc { font-size: 0.78rem; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 230px; font-family: 'DM Sans', sans-serif; }
+        .footer-col-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-bottom: 1.1rem; letter-spacing: 0.05em; }
+        .footer-links { display: flex; flex-direction: column; gap: 0.55rem; }
+        .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.2s; font-family: 'DM Sans', sans-serif; }
         .footer-links a:hover { color: #1AA3DE; }
-        .footer-bottom { max-width: 1100px; margin: 2rem auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
-        .footer-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.3); font-style: italic; }
+        .footer-bottom { max-width: 1100px; margin: 1.75rem auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-copy { font-size: 0.73rem; color: rgba(255,255,255,0.25); font-family: 'DM Sans', sans-serif; }
+        .footer-tagline { font-size: 0.73rem; color: rgba(255,255,255,0.25); font-style: italic; font-family: 'DM Sans', sans-serif; }
 
-        /* RESPONSIVE */
         @media (max-width: 1024px) {
           .solutions-grid { grid-template-columns: repeat(2, 1fr); }
           .packages-grid { grid-template-columns: repeat(2, 1fr); }
@@ -236,12 +215,11 @@ export default function Home() {
           .nav-mobile-btn { display: block; }
           .hero { padding: 0 1.25rem 4rem; }
           .hero-inner { padding-top: 7rem; }
-          .hero-title { font-size: 2rem; }
-          .solutions { padding: 4rem 1.25rem; }
+          .hero-title { font-size: 1.6rem; letter-spacing: 2px; }
+          .solutions, .why-sec, .calc-sec, .packages-sec, .cta-sec { padding: 4rem 1.25rem; }
           .solutions-grid { grid-template-columns: 1fr; gap: 2rem; }
-          .why-sec, .calc-sec, .packages-sec, .cta-sec { padding: 4rem 1.25rem; }
           .why-inner, .calc-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-          .why-img { height: 220px; }
+          .why-img { height: 200px; }
           .packages-grid { grid-template-columns: 1fr; }
           .stats-sec { padding: 2.5rem 1.25rem; }
           .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -254,7 +232,6 @@ export default function Home() {
         }
       `}</style>
 
-      {/* MOBILE MENU */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <button className="mobile-menu-close" onClick={() => setMenuOpen(false)}>✕</button>
         <a href="#packages" onClick={() => setMenuOpen(false)}>Packages</a>
@@ -271,12 +248,10 @@ export default function Home() {
         )}
       </div>
 
-      {/* NAV */}
       <nav className={scrolled ? 'scrolled' : ''}>
-        <a href="#" className="nav-logo">
-          <div className="nav-logo-icon">☀️</div>
-          E-LAW Solar
-        </a>
+      <a href="#" className="nav-logo">
+      <img src="/logo.png" alt="E-LAW Solar" style={{height:'80px', width:'auto', objectFit:'contain'}} />
+</a>
         <div className="nav-center">
           <a href="#packages">Packages</a>
           <a href="#solutions">Services</a>
@@ -286,7 +261,7 @@ export default function Home() {
         <div className="nav-right">
           {user ? (
             <>
-              <span style={{fontSize:'0.8rem', color:'rgba(255,255,255,0.5)'}}>{user.email}</span>
+              <span style={{fontSize:'0.78rem', color:'rgba(255,255,255,0.4)'}}>{user.email}</span>
               <a href="/dashboard" className="nav-cta">Dashboard</a>
             </>
           ) : (
@@ -299,12 +274,12 @@ export default function Home() {
         <button className="nav-mobile-btn" onClick={() => setMenuOpen(true)}>☰</button>
       </nav>
 
-      {/* HERO */}
       <div className="hero">
         <div className="hero-inner">
           <div className="hero-eyebrow">Residential Solar — Metro Manila & NCR</div>
           <h1 className="hero-title">Renewable Energy Solutions for Filipino Homes</h1>
-          <p className="hero-sub">Stop overpaying MERALCO. E-LAW Solar brings premium solar technology to Filipino families — cut your bill by up to 90%.</p>
+          <div className="hero-tagline">Empowering Low-cost Affordable Watts</div>
+          <p className="hero-sub">Stop overpaying MERALCO. E-LAW Solar helps Filipino families cut their electricity bills by 50–90% with affordable residential solar installation and flexible payment options.</p>
           <div className="hero-btns">
             <a href="#packages" className="btn-primary">Our Solar Solutions</a>
             <a href="#contact" className="btn-ghost">Speak To A Pro</a>
@@ -312,14 +287,13 @@ export default function Home() {
         </div>
       </div>
 
-      {/* STATS */}
       <div className="stats-sec">
         <div className="stats-inner">
           {[
-            { num: '90%', lbl: 'Energy Bill Reduction' },
-            { num: '10K+', lbl: 'Filipino Homes by 2030' },
-            { num: '25 yrs', lbl: 'Panel Warranty' },
-            { num: '3–5 yrs', lbl: 'Payback Period' },
+            { num: '50–90%', lbl: 'Electricity Bill Reduction' },
+            { num: '10,000', lbl: 'Filipino Homes by 2030' },
+            { num: '25 yrs', lbl: 'Panel Performance Warranty' },
+            { num: '3–5 yrs', lbl: 'Average Payback Period' },
           ].map((s, i) => (
             <div key={i}>
               <div className="stat-num">{s.num}</div>
@@ -329,19 +303,18 @@ export default function Home() {
         </div>
       </div>
 
-      {/* SOLUTIONS */}
       <div className="solutions" id="solutions">
         <div className="solutions-inner">
           <div className="sec-eyebrow">What We Offer</div>
-          <h2 className="sec-title">Solar Solutions That Works</h2>
+          <h2 className="sec-title">Solar Solutions That Work</h2>
           <div className="solutions-grid">
             {[
-              { title: 'Solar Panel Install', desc: 'Tailor-made solar solutions designed to fit the unique specifications of your home or business.' },
-              { title: 'Storage Solutions', desc: 'Ensure uninterrupted power with our cutting-edge solar battery storage solutions.' },
-              { title: 'Efficiency Audit', desc: 'Maximize your investment with our comprehensive solar efficiency audits, government approved!' },
-              { title: 'Financing & Incentives', desc: 'Navigate the financial aspects of going solar with ease. Includes incentives, rebates, grants and more.' },
+              { title: 'Solar Panel Installation', desc: 'Complete end-to-end residential solar installation using Tier 1 monocrystalline panels with 25-year performance warranty.' },
+              { title: 'Battery Storage', desc: 'Ensure uninterrupted power with our cutting-edge solar battery storage solutions for 24/7 energy independence.' },
+              { title: 'Energy Audit', desc: 'Free comprehensive home energy audit to calculate your exact savings and recommend the right system size.' },
+              { title: 'Financing & Incentives', desc: '0% installment, bank financing, rent-to-own options, and guidance on government solar incentives and net metering.' },
             ].map((s, i) => (
-              <div className="solution-item" key={i}>
+              <div key={i}>
                 <div className="solution-title">{s.title}</div>
                 <div className="solution-desc">{s.desc}</div>
                 <a href="#contact" className="solution-link">Learn More →</a>
@@ -351,16 +324,15 @@ export default function Home() {
         </div>
       </div>
 
-      {/* WHY US */}
       <div className="why-sec" id="why">
         <div className="why-inner">
-          <div className="why-content">
+          <div>
             <h2 className="why-title">Why Partner with Us for Your Solar Energy Solutions?</h2>
             <div className="why-subtitle">Experience, Innovation, and Commitment in Every Project</div>
             <p className="why-text">
-              At the core of our mission lies a profound commitment to transforming the way our world is powered, one solar solution at a time. With years of experience under our belt, our team brings a wealth of knowledge and a fresh perspective to each project, ensuring that every installation is tailored to meet our clients' specific needs.
+              At the core of our mission lies a profound commitment to transforming the way Filipino homes are powered. With deep understanding of local energy challenges, our team brings expertise and a Filipino-first approach to every installation.
               <br/><br/>
-              Our innovative approach combines the latest solar technologies with eco-friendly practices, making us leaders in sustainable energy solutions. But it's our unwavering commitment to excellence and customer satisfaction that truly sets us apart.
+              We combine Tier 1 solar technology with transparent pricing and flexible payment options — making clean energy accessible for every Filipino family, not just the privileged few.
             </p>
             <a href="#contact" className="why-link">Start Your Project →</a>
           </div>
@@ -370,7 +342,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* PACKAGES */}
       <div className="packages-sec" id="packages">
         <div className="packages-inner">
           <div className="sec-eyebrow">Solar Packages</div>
@@ -387,6 +358,10 @@ export default function Home() {
                   <div className="pkg-tagline">{pkg.tagline}</div>
                   <div className="pkg-name">{pkg.name}</div>
                   <hr className="pkg-divider" />
+                  <div className="pkg-row">
+                    <span className="pkg-row-lbl">System Size</span>
+                    <span className="pkg-row-val">{pkg.size}</span>
+                  </div>
                   <div className="pkg-row">
                     <span className="pkg-row-lbl">Monthly Bill</span>
                     <span className="pkg-row-val">{pkg.bill}</span>
@@ -412,14 +387,13 @@ export default function Home() {
         </div>
       </div>
 
-      {/* CALCULATOR */}
       <div className="calc-sec" id="calculator">
         <div className="calc-inner">
           <div>
             <div className="sec-eyebrow">Savings Calculator</div>
             <h2 className="sec-title">How Much Can You Save?</h2>
-            <p style={{fontSize:'0.88rem', color:'rgba(255,255,255,0.5)', lineHeight:'1.75', maxWidth:'400px'}}>
-              Enter your average monthly MERALCO bill and we'll instantly recommend the best solar package for your home.
+            <p style={{fontSize:'0.82rem', color:'rgba(255,255,255,0.45)', lineHeight:'1.8', maxWidth:'380px', fontFamily:'DM Sans, sans-serif'}}>
+              Enter your average monthly MERALCO bill and we'll instantly recommend the best solar package for your home. MERALCO rates average ₱12.85/kWh — solar pays for itself in 3–5 years.
             </p>
           </div>
           <div className="calc-card">
@@ -437,12 +411,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* CTA */}
       <div className="cta-sec" id="contact">
         <div className="cta-inner">
           <div className="sec-eyebrow" style={{justifyContent:'center', display:'flex'}}>Get Started Today</div>
           <h2 className="cta-title">Ready to Stop Overpaying for Electricity?</h2>
-          <p className="cta-desc">Book a free home consultation. No obligation, no pressure. Our team will assess your home and recommend the best solar setup.</p>
+          <p className="cta-desc">Book a free home energy consultation. No obligation, no pressure. Our certified team will assess your home and calculate your exact savings.</p>
           <div className="cta-btns">
             <a href="https://m.me/elawsolar" className="btn-primary">💬 Message Us on Facebook</a>
             <a href="tel:09560641174" className="btn-ghost">📞 Call 0956 064 1174</a>
@@ -450,15 +423,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* FOOTER */}
       <footer>
         <div className="footer-grid">
           <div>
-            <a href="#" className="nav-logo" style={{textDecoration:'none'}}>
-              <div className="nav-logo-icon">☀️</div>
-              E-LAW Solar
-            </a>
-            <p className="footer-desc">Bringing affordable solar energy to Filipino urban families. Cut your bill, save the planet, invest in your future.</p>
+            <div className="footer-brand-name">E-LAW Solar</div>
+            <div className="footer-brand-tagline">Empowering Low-cost Affordable Watts</div>
+            <p className="footer-desc">Bringing affordable solar energy to Filipino urban families in Metro Manila and NCR. Cut your bill, achieve energy independence.</p>
           </div>
           <div>
             <div className="footer-col-title">Company</div>
@@ -475,7 +445,7 @@ export default function Home() {
               <a href="#solutions">Solar Installation</a>
               <a href="#solutions">Battery Storage</a>
               <a href="#solutions">Energy Audit</a>
-              <a href="#solutions">Financing</a>
+              <a href="#solutions">Financing Options</a>
             </div>
           </div>
           <div>
@@ -483,14 +453,14 @@ export default function Home() {
             <div className="footer-links">
               <a href="tel:09560641174">📞 0956 064 1174</a>
               <a href="mailto:e-lawsolar@gmail.com">✉️ e-lawsolar@gmail.com</a>
-              <a href="#">📍 Batasan Hills, Quezon City</a>
+              <a href="#">📍 Batasan Hills, Quezon City 1126</a>
               <a href="https://m.me/elawsolar">💬 Facebook Messenger</a>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <div className="footer-copy">© 2025 E-LAW Solar. All rights reserved.</div>
-          <div className="footer-tagline">"Sa E-LAW, ang araw ay para sa lahat." ☀️</div>
+          <div className="footer-copy">© 2025 E-LAW — Empowering Low-cost Affordable Watts. All rights reserved.</div>
+          <div className="footer-tagline">"Sa E-LAW, ang araw ay para sa lahat."</div>
         </div>
       </footer>
     </>
