@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Syne:wght@600;700&family=DM+Sans:wght@400;500&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body { font-family: 'DM Sans', sans-serif; background: #0E1C29; color: #fff; overflow-x: hidden; }
@@ -120,12 +120,13 @@ export default function Home() {
         }
         .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; padding-top: 9rem; }
         .hero-eyebrow { font-size: 0.75rem; color: #1AA3DE; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem; }
-       .hero-title {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(4rem, 9vw, 8rem);
-          font-weight: 400;
-          line-height: 0.95;
-          letter-spacing: 4px;
+      .hero-title {
+          font-family: 'Inter', sans-serif;
+          font-size: clamp(2.8rem, 7vw, 6.5rem);
+          font-weight: 300;
+          line-height: 1.0;
+          letter-spacing: 8px;
+          text-transform: uppercase;
           margin-bottom: 1.25rem;
           max-width: 800px; color: #fff;
         }
@@ -152,7 +153,7 @@ export default function Home() {
         .why-sec { background: #0a1520; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
         .why-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
         .why-content {}
-        .why-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.2; letter-spacing: -0.3px; }
+        .why-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.2; letter-spacing: -0.5px; }
         .why-subtitle { font-size: 0.78rem; color: rgba(255,255,255,0.4); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
         .why-text { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 1.75rem; font-weight: 400; }
         .why-link { font-size: 0.82rem; color: #1AA3DE; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.35rem; transition: gap 0.2s; width: fit-content; }
@@ -207,7 +208,7 @@ export default function Home() {
         /* CTA */
         .cta-sec { background: #0E1C29; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
         .cta-inner { max-width: 600px; margin: 0 auto; }
-        .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 1rem; letter-spacing: -0.3px; }
+        .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 1rem; letter-spacing: -0.5px; }
         .cta-desc { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 2rem; }
         .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
