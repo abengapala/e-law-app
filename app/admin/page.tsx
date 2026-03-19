@@ -60,8 +60,13 @@ export default function AdminPage() {
       const { error: uploadError } = await supabase.storage.from('package-images').upload(path, file, { upsert: true })
       if (uploadError) throw uploadError
       const { data: urlData } = supabase.storage.from('package-images').getPublicUrl(path)
-      const publicUrl = urlData.publicUrl + '?t=' + Date.now()
-      await supabase.from('packages').update({ image_url: publicUrl }).eq('id', pkgId)
+      const publicUrl = urlData.publicUrl
+      const { error: dbError } = await supabase.from('packages').update({ image_url: publicUrl }).eq('id', pkgId)
+      console.log('DB update result:', dbError)
+      if (dbError) {
+        alert('Database error: ' + dbError.message)
+        return
+      }
       setPkgImages(prev => ({ ...prev, [pkgId]: publicUrl }))
       alert('✅ Image uploaded successfully!')
     } catch (e) { alert('Upload failed: ' + e) }
