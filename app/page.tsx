@@ -23,12 +23,21 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false)
   const [user, setUser] = useState<any>(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [imageUrls, setImageUrls] = useState<Record<number, string>>({})
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll)
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user || null)
+    })
+    // Add this:
+    supabase.from('packages').select('id, image_url').then(({ data }) => {
+      if (data) {
+        const map: Record<number, string> = {}
+        data.forEach((p: any) => { if (p.image_url) map[p.id] = p.image_url })
+        setImageUrls(map)
+      }
     })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -158,7 +167,7 @@ export default function Home() {
         .pkg-card.popular { border-color: rgba(26,163,222,0.35); }
         .pkg-img-placeholder { width: 100%; height: 155px; background: linear-gradient(135deg, #1a2f3f, #0e1c29); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; color: rgba(255,255,255,0.25); font-size: 0.72rem; font-family: 'DM Sans', sans-serif; }
         .pkg-img-placeholder span { font-size: 2rem; }
-        .pkg-img { width: 100%; height: 155px; object-fit: cover; display: block; }
+       .pkg-img { width: 100%; height: 160px; object-fit: cover; display: block; }
         .popular-badge { position: absolute; top: 10px; right: 10px; background: #1AA3DE; color: #fff; font-size: 0.58rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'DM Sans', sans-serif; }
         .pkg-body { padding: 1.1rem 1.25rem; }
         .pkg-tagline { font-size: 0.62rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.2rem; font-family: 'DM Sans', sans-serif; }
@@ -349,10 +358,14 @@ export default function Home() {
           <div className="packages-grid">
             {packages.map((pkg, i) => (
               <div className={`pkg-card${pkg.popular ? ' popular' : ''}`} key={i}>
-                <div className="pkg-img-placeholder">
-                  <span>☀️</span>
-                  <span>Product Photo</span>
-                </div>
+                {imageUrls[i + 1] ? (
+                  <img src={imageUrls[i + 1]} alt={pkg.name} className="pkg-img" />
+                ) : (
+                  <div className="pkg-img-placeholder">
+                    <span>☀️</span>
+                    <span>Product Photo</span>
+                  </div>
+                )}
                 {pkg.popular && <div className="popular-badge">Most Popular</div>}
                 <div className="pkg-body">
                   <div className="pkg-tagline">{pkg.tagline}</div>
