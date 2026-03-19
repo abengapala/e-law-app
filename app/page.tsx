@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
         body { font-family: 'DM Sans', sans-serif; background: #0E1C29; color: #fff; overflow-x: hidden; }
@@ -85,7 +85,7 @@ export default function Home() {
           border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .nav-logo {
-          font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem;
+          font-family: 'Bebas Neue', sans-serif; font-weight: 800; font-size: 1.3rem;
           color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.6rem;
         }
         .nav-logo-icon { width: 30px; height: 30px; background: #1AA3DE; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
@@ -107,7 +107,7 @@ export default function Home() {
         /* MOBILE MENU */
         .mobile-menu { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(14,28,41,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
         .mobile-menu.open { display: flex; }
-        .mobile-menu a { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
+        .mobile-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; text-decoration: none; }
         .mobile-menu-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; }
 
         /* HERO */
@@ -120,12 +120,14 @@ export default function Home() {
         }
         .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; padding-top: 9rem; }
         .hero-eyebrow { font-size: 0.75rem; color: #1AA3DE; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem; }
-        .hero-title {
-          font-family: 'Syne', sans-serif;
-          font-size: clamp(2.5rem, 6vw, 4.5rem);
-          font-weight: 800; line-height: 1.08;
-          letter-spacing: -1px; margin-bottom: 1.25rem;
-          max-width: 680px; color: #fff;
+       .hero-title {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: clamp(4rem, 9vw, 8rem);
+          font-weight: 400;
+          line-height: 0.95;
+          letter-spacing: 4px;
+          margin-bottom: 1.25rem;
+          max-width: 800px; color: #fff;
         }
         .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 500px; margin-bottom: 2.5rem; font-weight: 400; }
         .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -138,10 +140,10 @@ export default function Home() {
         .solutions { background: #0E1C29; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
         .solutions-inner { max-width: 1100px; margin: 0 auto; }
         .sec-eyebrow { font-size: 0.72rem; color: rgba(255,255,255,0.4); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
-        .sec-title { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 3rem; letter-spacing: -0.3px; }
+        .sec-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 3rem; letter-spacing: -0.3px; }
         .solutions-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
         .solution-item { }
-        .solution-title { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
+        .solution-title { font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
         .solution-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 1rem; font-weight: 400; }
         .solution-link { font-size: 0.8rem; color: #1AA3DE; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.35rem; transition: gap 0.2s; }
         .solution-link:hover { gap: 0.6rem; }
@@ -150,7 +152,7 @@ export default function Home() {
         .why-sec { background: #0a1520; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); }
         .why-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
         .why-content {}
-        .why-title { font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.2; letter-spacing: -0.3px; }
+        .why-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 0.5rem; line-height: 1.2; letter-spacing: -0.3px; }
         .why-subtitle { font-size: 0.78rem; color: rgba(255,255,255,0.4); letter-spacing: 0.05em; margin-bottom: 1.5rem; }
         .why-text { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 1.75rem; font-weight: 400; }
         .why-link { font-size: 0.82rem; color: #1AA3DE; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 0.35rem; transition: gap 0.2s; width: fit-content; }
@@ -168,15 +170,15 @@ export default function Home() {
         .pkg-img { width: 100%; height: 160px; object-fit: cover; display: block; }
         .pkg-img-placeholder { width: 100%; height: 160px; background: linear-gradient(135deg, #1a2f3f, #0e1c29); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; color: rgba(255,255,255,0.3); font-size: 0.75rem; }
         .pkg-img-placeholder span { font-size: 2rem; }
-        .popular-badge { position: absolute; top: 10px; right: 10px; background: #1AA3DE; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'Syne', sans-serif; }
+        .popular-badge { position: absolute; top: 10px; right: 10px; background: #1AA3DE; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'Bebas Neue', sans-serif; }
         .pkg-body { padding: 1.25rem; }
         .pkg-tagline { font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.25rem; }
-        .pkg-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; letter-spacing: -0.2px; }
+        .pkg-name { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; letter-spacing: -0.2px; }
         .pkg-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0.75rem 0; }
         .pkg-row { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
         .pkg-row-lbl { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
         .pkg-row-val { font-size: 0.78rem; font-weight: 600; color: #fff; }
-        .pkg-price { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: #1AA3DE; margin: 0.85rem 0; letter-spacing: -0.3px; }
+        .pkg-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; font-weight: 800; color: #1AA3DE; margin: 0.85rem 0; letter-spacing: -0.3px; }
         .pkg-btn { width: 100%; padding: 0.7rem; border-radius: 7px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; border: 1px solid rgba(26,163,222,0.3); background: transparent; color: rgba(255,255,255,0.8); }
         .pkg-btn:hover { border-color: #1AA3DE; color: #1AA3DE; }
         .pkg-btn.primary { background: #1AA3DE; color: #fff; border-color: #1AA3DE; }
@@ -193,19 +195,19 @@ export default function Home() {
         .calc-input::placeholder { color: rgba(255,255,255,0.25); }
         .calc-result { background: rgba(26,163,222,0.08); border: 1px solid rgba(26,163,222,0.2); border-radius: 10px; padding: 1.25rem; margin-top: 1rem; }
         .calc-result-label { font-size: 0.7rem; color: #1AA3DE; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.35rem; }
-        .calc-result-name { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+        .calc-result-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
         .calc-result-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
 
         /* STATS */
         .stats-sec { background: #132030; padding: 3.5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
-        .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: #1AA3DE; margin-bottom: 0.25rem; }
+        .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; font-weight: 800; color: #1AA3DE; margin-bottom: 0.25rem; }
         .stat-lbl { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 400; }
 
         /* CTA */
         .cta-sec { background: #0E1C29; padding: 5rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
         .cta-inner { max-width: 600px; margin: 0 auto; }
-        .cta-title { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 1rem; letter-spacing: -0.3px; }
+        .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 1rem; letter-spacing: -0.3px; }
         .cta-desc { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 2rem; }
         .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
@@ -213,7 +215,7 @@ export default function Home() {
         footer { background: #070e16; border-top: 1px solid rgba(255,255,255,0.06); padding: 4rem 3rem 2rem; }
         .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
         .footer-desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 240px; margin-top: 1rem; }
-        .footer-col-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; color: #fff; margin-bottom: 1.25rem; letter-spacing: 0.03em; }
+        .footer-col-title { font-family: 'Bebas Neue', sans-serif; font-weight: 700; font-size: 0.82rem; color: #fff; margin-bottom: 1.25rem; letter-spacing: 0.03em; }
         .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
         .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
         .footer-links a:hover { color: #1AA3DE; }
