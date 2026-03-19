@@ -119,18 +119,18 @@ export default function Home() {
           position: relative;
         }
         .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; padding-top: 9rem; }
-        .hero-eyebrow { font-size: 0.75rem; color: #1AA3DE; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem; }
+        .hero-eyebrow { font-size: 0.7rem; color: rgba(255,255,255,0.5); font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; }
       .hero-title {
           font-family: 'Inter', sans-serif;
-          font-size: clamp(2.8rem, 7vw, 6.5rem);
+          font-size: clamp(1.8rem, 3.5vw, 3rem);
           font-weight: 300;
-          line-height: 1.0;
-          letter-spacing: 8px;
+          line-height: 1.1;
+          letter-spacing: 4px;
           text-transform: uppercase;
-          margin-bottom: 1.25rem;
-          max-width: 800px; color: #fff;
+          margin-bottom: 0.75rem;
+          max-width: 900px; color: #fff;
         }
-        .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 500px; margin-bottom: 2.5rem; font-weight: 400; }
+        .hero-sub { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 500px; margin-bottom: 2rem; font-weight: 300; }
         .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
         .btn-primary { background: #1AA3DE; color: #fff; padding: 0.85rem 2rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
         .btn-primary:hover { background: #1591c7; transform: translateY(-1px); }
